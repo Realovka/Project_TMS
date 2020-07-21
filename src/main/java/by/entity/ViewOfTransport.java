@@ -1,3 +1,7 @@
+package by.entity;
+
+import by.entity.TypeOfTransport;
+
 public class ViewOfTransport {
     private  int id;
     private String name;
@@ -6,6 +10,15 @@ public class ViewOfTransport {
     private double cargo;
     private TypeOfTransport typeOfTransport;
     private double pricePerKm;
+
+    public ViewOfTransport(int id, String name, int speed, int passengers, double cargo,  double pricePerKm) {
+        this.id = id;
+        this.name = name;
+        this.speed = speed;
+        this.passengers = passengers;
+        this.cargo = cargo;
+        this.pricePerKm = pricePerKm;
+    }
 
     public ViewOfTransport(int id, String name, int speed, int passengers, double cargo, TypeOfTransport typeOfTransport, double pricePerKm) {
         this.id = id;

@@ -1,10 +1,13 @@
+package by.entity;
+
 public class TypeOfTransport {
     private int id;
     private String name;
 
-    public TypeOfTransport(int id, String name) {
+
+
+    public TypeOfTransport(int id) {
         this.id = id;
-        this.name = name;
     }
 
     public int getId() {

@@ -1,3 +1,9 @@
+package by.application;
+
+import by.controller.BestTravel;
+//import by.controller.BestTravelBySpeedController;
+//import by.controller.BestTravelController;
+
 import java.util.Scanner;
 
 public class ApplicationTwoViewsTravel {
@@ -9,11 +15,12 @@ public class ApplicationTwoViewsTravel {
         Scanner scanner = new Scanner(System.in);
         int twoViewsTravel = scanner.nextInt();
         switch (twoViewsTravel) {
-            case 1:BestTravelController bestTravelController=new BestTravelBySpeedController();
-                bestTravelController.getBestTravel(cityOut,  cityIn,  passengersOut,cargoOut);
+            case 1: BestTravel.getBestTransportBySpeed(cityOut,cityIn, passengersOut,cargoOut);
                 break;
+
+
             default:
-                System.out.println("Вы ввели неродходящее число");
+                System.out.println("Вы ввели неподходящее число");
                 ApplicationTwoViewsTravel.showTwoViewsTravel(cityOut, cityIn,  passengersOut, cargoOut);
 
         }

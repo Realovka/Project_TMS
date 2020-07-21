@@ -1,4 +1,8 @@
+package by.util;
 
+import by.entity.City;
+import by.entity.ViewOfTransport;
+import by.util.Calсulation;
 
 public class Message {
     public static void getMessageAboutTravel(String cityOut, String cityIn, int passengersOut, double cargoOut, ViewOfTransport viewOfTransport, City cityFirstOut, City cityFirstIn){

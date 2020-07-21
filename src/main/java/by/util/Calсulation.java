@@ -1,3 +1,5 @@
+package by.util;
+
 public class Calсulation {
     private static final  int RADIUS=6371;
     private static final  double PI=3.1416;

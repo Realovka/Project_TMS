@@ -1,22 +1,21 @@
+package by.application;
 
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.*;
-import java.util.ArrayList;
+import by.util.DBConnection;
+import by.util.InPut;
+
 import java.util.List;
 import java.util.Scanner;
 
 
 public class ApplicationBestTravel {
 
-    List<String> cities = new ArrayList<>();
     private String cityOut;
     private String cityIn;
     private int passengersOut;
     private double cargoOut;
 
     public void showQuestion() {
-        getCities();
+        List<String> cities= DBConnection.getCities();
         boolean flagCityOut = true;
         boolean flagCityIn = true;
 
@@ -43,22 +42,5 @@ public class ApplicationBestTravel {
         ApplicationTwoViewsTravel.showTwoViewsTravel(cityOut, cityIn, passengersOut, cargoOut);
 
 
-    }
-
-
-    public void getCities() {
-        try (Connection connection = DBConnection.getConnection()) {
-            Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT name FROM cities");
-            while (result.next()) {
-                String city = result.getString("name");
-                System.out.println(result.getString("name"));
-                cities.add(city);
-            }
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 }
