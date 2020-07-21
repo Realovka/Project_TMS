@@ -9,6 +9,16 @@ public class City {
     private boolean seaPort;
     private String continent;
 
+    public City(String name, double latitude, double longitude, boolean airport, boolean seaPort, String continent) {
+
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.airport = airport;
+        this.seaPort = seaPort;
+        this.continent = continent;
+    }
+
     public City(int id, String name, double latitude, double longitude, boolean airport, boolean seaPort, String continent) {
         this.id = id;
         this.name = name;

@@ -9,12 +9,12 @@ import java.util.Scanner;
 
 public class ApplicationBestTravel {
 
-    private String cityOut;
-    private String cityIn;
-    private int passengersOut;
-    private double cargoOut;
+    private static String cityOut;
+    private static String cityIn;
+    private static int passengersOut;
+    private static double cargoOut;
 
-    public void showQuestion() {
+    public static void showQuestion() {
         List<String> cities= DBConnection.getCities();
         boolean flagCityOut = true;
         boolean flagCityIn = true;
