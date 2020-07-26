@@ -1,4 +1,6 @@
-package by.entity;
+package by.realovka.projectTMS.entity;
+
+import java.util.Objects;
 
 public class City {
     private int id;
@@ -86,6 +88,20 @@ public class City {
 
     public void setContinent(String continent) {
         this.continent = continent;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        City city = (City) o;
+        return id == city.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     @Override

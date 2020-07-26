@@ -1,31 +1,40 @@
-package by.application;
+package by.realovka.projectTMS.application;
 
-import by.entity.City;
-import by.util.InPut;
+import by.realovka.projectTMS.entity.City;
+import by.realovka.projectTMS.util.DBConnection;
+import by.realovka.projectTMS.util.InPut;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class ApplicationInsertCity {
-    private static List<String> continents = Arrays.asList("Евразия", "Северная Америка", "Африка", "Австралия", "Антарктида", "Южная Америка");
+public class InsertOrUpdateCityView {
 
-    public static City setCity() {
-        Boolean airportCity = false;
-        Boolean seaPortCity = false;
-        boolean airportFlag = true;
-        boolean seaPortFlag = true;
-        boolean flag = true;
-        String continent=null;
-        System.out.println("Введите название города");
-        Scanner scanner = new Scanner(System.in);
-        String cityName = scanner.nextLine();
+    private static List<String> continents = Arrays.asList("Евразия", "Северная Америка", "Африка", "Австралия", "Антарктида", "Южная Америка");
+    private static boolean airportCity = false;
+    private static boolean seaPortCity = false;
+    private static boolean airportFlag = true;
+    private static boolean seaPortFlag = true;
+    private static boolean cityDelete = true;
+    private static boolean flag = true;
+    private static String continent;
+    private static String cityName;
+
+    public static City setOrUpdateCity(int choice) {
+        switch (choice) {
+            case 1:
+                insertCity();
+                break;
+            case 3:
+                updateCity();
+                break;
+        }
         System.out.println("Введите широту, где расположен город");
         Scanner scanner1 = new Scanner(System.in);
-        Double latitudeCity = InPut.getDouble(scanner1);
+        double latitudeCity = InPut.getDouble(scanner1);
         System.out.println("Введите долготу, где расположен город");
         Scanner scanner2 = new Scanner(System.in);
-        Double longitudeCity = InPut.getDouble(scanner2);
+        double longitudeCity = InPut.getDouble(scanner2);
         while (airportFlag) {
             System.out.println("Есть ли в городе аэропорт?");
             Scanner scanner3 = new Scanner(System.in);
@@ -33,6 +42,7 @@ public class ApplicationInsertCity {
             airportCity = list.get(1);
             airportFlag = list.get(0);
         }
+        airportFlag=true;
         while (seaPortFlag) {
             System.out.println("Есть ли в городе морской порт?");
             Scanner scanner3 = new Scanner(System.in);
@@ -40,6 +50,7 @@ public class ApplicationInsertCity {
             seaPortCity = list.get(1);
             seaPortFlag = list.get(0);
         }
+        seaPortFlag=true;
         for (String item : continents) {
             System.out.println(item);
         }
@@ -49,7 +60,27 @@ public class ApplicationInsertCity {
             continent = scanner3.nextLine();
             flag = InPut.getContinent(continent, continents);
         }
+        flag=true;
         return new City(cityName, latitudeCity, longitudeCity, airportCity, seaPortCity, continent);
 
+    }
+
+    public static String insertCity() {
+        System.out.println("Введите название города");
+        Scanner scanner = new Scanner(System.in);
+        cityName = scanner.nextLine();
+        return cityName;
+    }
+
+    public static String updateCity() {
+        List<String> cities = DBConnection.getCities();
+        while (cityDelete) {
+            System.out.println("Выберите из списка город, который хотите редактировать");
+            Scanner scanner = new Scanner(System.in);
+            cityName = scanner.nextLine();
+            cityDelete = InPut.getCity(cities, cityName);
+        }
+        cityDelete=true;
+        return cityName;
     }
 }

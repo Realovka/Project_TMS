@@ -1,4 +1,4 @@
-package by.util;
+package by.realovka.projectTMS.util;
 
 import java.util.*;
 
@@ -11,6 +11,14 @@ public class InPut {
             System.out.println("В списке нет такого города");
         }
         return !cities.contains(city);
+    }
+
+    public static boolean getViewOfTransport(List<String> view_of_transports, String transport) {
+
+        if (!view_of_transports.contains(transport)) {
+            System.out.println("В списке нет такого транспорта");
+        }
+        return !view_of_transports.contains(transport);
     }
 
     public static int getInt(Scanner scanner) {

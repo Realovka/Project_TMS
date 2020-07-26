@@ -1,26 +1,28 @@
-package by.entity;
+package by.realovka.projectTMS.entity;
 
-import by.entity.TypeOfTransport;
+import java.util.Objects;
 
-public class ViewOfTransport {
+public class TransportView {
     private  int id;
     private String name;
     private int speed;
     private int passengers;
     private double cargo;
-    private TypeOfTransport typeOfTransport;
+    private TransportType typeOfTransport;
     private double pricePerKm;
 
-    public ViewOfTransport(int id, String name, int speed, int passengers, double cargo,  double pricePerKm) {
-        this.id = id;
+
+
+    public TransportView(String name, int speed, int passengers, double cargo, TransportType typeOfTransport, double pricePerKm) {
         this.name = name;
         this.speed = speed;
         this.passengers = passengers;
         this.cargo = cargo;
+        this.typeOfTransport = typeOfTransport;
         this.pricePerKm = pricePerKm;
     }
 
-    public ViewOfTransport(int id, String name, int speed, int passengers, double cargo, TypeOfTransport typeOfTransport, double pricePerKm) {
+    public TransportView(int id, String name, int speed, int passengers, double cargo, TransportType typeOfTransport, double pricePerKm) {
         this.id = id;
         this.name = name;
         this.speed = speed;
@@ -30,7 +32,7 @@ public class ViewOfTransport {
         this.pricePerKm = pricePerKm;
     }
 
-    public ViewOfTransport() {
+    public TransportView() {
     }
 
     public int getId() {
@@ -73,11 +75,11 @@ public class ViewOfTransport {
         this.cargo = cargo;
     }
 
-    public TypeOfTransport getTypeOfTransport() {
+    public TransportType getTypeOfTransport() {
         return typeOfTransport;
     }
 
-    public void setTypeOfTransport(TypeOfTransport typeOfTransport) {
+    public void setTypeOfTransport(TransportType typeOfTransport) {
         this.typeOfTransport = typeOfTransport;
     }
 
@@ -87,6 +89,19 @@ public class ViewOfTransport {
 
     public void setPricePerKm(double pricePerKm) {
         this.pricePerKm = pricePerKm;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TransportView that = (TransportView) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     @Override

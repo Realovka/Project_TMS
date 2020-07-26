@@ -1,4 +1,4 @@
-package by.util;
+package by.realovka.projectTMS.util;
 
 public class Calсulation {
     private static final  int RADIUS=6371;

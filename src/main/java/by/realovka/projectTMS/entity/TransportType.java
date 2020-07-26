@@ -1,12 +1,19 @@
-package by.entity;
+package by.realovka.projectTMS.entity;
 
-public class TypeOfTransport {
+public class TransportType {
     private int id;
     private String name;
 
 
+    public TransportType() {
+    }
 
-    public TypeOfTransport(int id) {
+    public TransportType(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public TransportType(int id) {
         this.id = id;
     }
 
@@ -28,9 +35,6 @@ public class TypeOfTransport {
 
     @Override
     public String toString() {
-        return "TypeOfTransport{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return name + " ";
     }
 }

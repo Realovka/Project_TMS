@@ -34,5 +34,12 @@
         <artifactId>mysql-connector-java</artifactId>
         <version>8.0.20</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.scala-js/scalajs-dom -->
+    <dependency>
+        <groupId>org.scala-js</groupId>
+        <artifactId>scalajs-dom_sjs1_2.13</artifactId>
+        <version>1.0.0</version>
+    </dependency>
+
 </dependencies>
 </project>
