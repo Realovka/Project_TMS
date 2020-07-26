@@ -1,7 +1,7 @@
 package by.realovka.projectTMS.application;
 
-import by.realovka.projectTMS.controller.BestTravel;
-import by.realovka.projectTMS.util.DBConnection;
+import by.realovka.projectTMS.controller.BestTravelController;
+import by.realovka.projectTMS.dao.DBConnectionDao;
 import by.realovka.projectTMS.util.InPut;
 
 import java.util.List;
@@ -50,7 +50,7 @@ public class BestTravelView {
     }
 
     public static void showQuestion() {
-        List<String> cities= DBConnection.getCities();
+        List<String> cities= DBConnectionDao.getCities();
 
         while (flagCityOut) {
             System.out.println("Выберите из списка город, из которого нужно уехать ");
@@ -73,7 +73,7 @@ public class BestTravelView {
         Scanner scanner1 = new Scanner(System.in);
         cargoOut = InPut.getDouble(scanner1);
 
-        BestTravel.getBestTransport(cityOut,cityIn,passengersOut,cargoOut);
+        BestTravelController.getBestTransport(cityOut,cityIn,passengersOut,cargoOut);
 
 
     }

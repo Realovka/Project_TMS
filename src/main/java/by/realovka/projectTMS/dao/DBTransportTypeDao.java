@@ -1,15 +1,14 @@
 package by.realovka.projectTMS.dao;
 
 import by.realovka.projectTMS.entity.TransportView;
-import by.realovka.projectTMS.util.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class DBTypeOfTransportDao {
+public class DBTransportTypeDao {
     public static void add(TransportView viewOfTransport) {
-        try (Connection connection = DBConnection.getConnection()) {
+        try (Connection connection = DBConnectionDao.getConnection()) {
             String sql = "INSERT INTO view_of_transport (name, speed,passengers,cargo,type,price_per_km) VALUES(?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, viewOfTransport.getName());
@@ -26,7 +25,7 @@ public class DBTypeOfTransportDao {
     }
 
     public static void remove(String viewOfTransport) {
-        try (Connection connection = DBConnection.getConnection()) {
+        try (Connection connection = DBConnectionDao.getConnection()) {
             String sql = "DELETE FROM view_of_transport WHERE name=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, viewOfTransport);
@@ -36,7 +35,7 @@ public class DBTypeOfTransportDao {
         }
     }
     public static void update(TransportView viewOfTransport) {
-        try (Connection connection = DBConnection.getConnection()) {
+        try (Connection connection = DBConnectionDao.getConnection()) {
             String sql = "UPDATE view_of_transport SET  speed=?,passengers=?,cargo=?,type=?,price_per_km=? WHERE name=? ";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, viewOfTransport.getSpeed());

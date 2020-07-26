@@ -1,8 +1,8 @@
 package by.realovka.projectTMS.application;
 
-import by.realovka.projectTMS.controller.BestTravel;
-import by.realovka.projectTMS.controller.Report;
-import by.realovka.projectTMS.util.DBConnection;
+import by.realovka.projectTMS.controller.BestTravelController;
+import by.realovka.projectTMS.controller.ReportController;
+import by.realovka.projectTMS.dao.DBConnectionDao;
 
 import java.util.Scanner;
 
@@ -21,17 +21,17 @@ public class AdminAndUserView {
             switch (answer) {
                 case 1:
                     BestTravelView.showQuestion();
-                    if (BestTravel.getAllTransportFromTwoCities(DBConnection.getCityOut(BestTravelView.getCityOut()),
-                        DBConnection.getCityOut(BestTravelView.getCityIn()), BestTravelView.getPassengersOut(),
+                    if (BestTravelController.getAllTransportFromTwoCities(DBConnectionDao.getCityOut(BestTravelView.getCityOut()),
+                        DBConnectionDao.getCityOut(BestTravelView.getCityIn()), BestTravelView.getPassengersOut(),
                         BestTravelView.getCargoOut()).size()!=0) {
-                        DBConnection.getReportInformation();
+                        DBConnectionDao.getReportInformation();
                     }
                     break;
                 case 2:
                     ModificationCompanyView.showModificationMenu();
                     break;
                 case 3:
-                    Report report = new Report();
+                    ReportController report = new ReportController();
                     Thread thread = new Thread(report);
                     thread.start();
                     AdminAndUserView.showMenuForAdministrator();

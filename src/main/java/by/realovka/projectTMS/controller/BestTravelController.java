@@ -1,7 +1,7 @@
 package by.realovka.projectTMS.controller;
 
 import by.realovka.projectTMS.entity.TransportView;
-import by.realovka.projectTMS.util.DBConnection;
+import by.realovka.projectTMS.dao.DBConnectionDao;
 import by.realovka.projectTMS.entity.City;
 import by.realovka.projectTMS.util.Message;
 
@@ -10,7 +10,7 @@ import java.util.List;
 
 
 
-public class BestTravel {
+public class BestTravelController {
     private static final String SORTBYSPEED="быстрый";
     private static final String SORTBYPRICE="дешевый";
     private static TransportView minPrice =new TransportView();
@@ -18,8 +18,8 @@ public class BestTravel {
 
     public static void getBestTransport(String cityOut, String cityIn, int passengersOut, double cargoOut) {
 
-        City cityFirstOut = DBConnection.getCityOut(cityOut);
-        City cityFirstIn = DBConnection.getCityOut(cityIn);
+        City cityFirstOut = DBConnectionDao.getCityOut(cityOut);
+        City cityFirstIn = DBConnectionDao.getCityOut(cityIn);
         List<TransportView> viewOfTransportList = getAllTransportFromTwoCities(cityFirstOut, cityFirstIn, passengersOut, cargoOut);
 
             if (viewOfTransportList == null) {
@@ -28,7 +28,7 @@ public class BestTravel {
             }
 
 
-            TransportView transportBySpeed = BestTravel.getBestTransportBySpeed(viewOfTransportList);
+            TransportView transportBySpeed = BestTravelController.getBestTransportBySpeed(viewOfTransportList);
             if (transportBySpeed.getName() == null) {
                 System.out.println("Путешествие невозможно, так как такое количество груза и(или) количество пассажиров невозможно перевезти ни на одном виде транспорта");
                 return;
@@ -36,12 +36,12 @@ public class BestTravel {
             Message.getMessageAboutTravel(SORTBYSPEED, cityOut, cityIn, passengersOut, cargoOut, transportBySpeed, cityFirstOut, cityFirstIn);
 
 
-            TransportView transportByPrice = BestTravel.getBestTransportByPrice(viewOfTransportList);
+            TransportView transportByPrice = BestTravelController.getBestTransportByPrice(viewOfTransportList);
             if (transportByPrice.getName() == null) {
                 System.out.println("Путешествие невозможно, так как такое количество груза и(или) количество пассажиров невозможно перевезти ни на одном виде транспорта");
                 return;
             }
-            Message.getMessageAboutTravel(SORTBYPRICE, cityOut, cityIn, passengersOut, cargoOut, BestTravel.getBestTransportByPrice(viewOfTransportList), cityFirstOut, cityFirstIn);
+            Message.getMessageAboutTravel(SORTBYPRICE, cityOut, cityIn, passengersOut, cargoOut, BestTravelController.getBestTransportByPrice(viewOfTransportList), cityFirstOut, cityFirstIn);
 
 
     }
@@ -50,13 +50,13 @@ public class BestTravel {
         List<TransportView> differentTransports = new ArrayList<>();
         List<TransportView> transportsYouCanUse = new ArrayList<>();
         if (cityFirstOut.isAirport() && cityFirstIn.isAirport()) {
-            differentTransports.addAll(DBConnection.getAllAirTransport());
+            differentTransports.addAll(DBConnectionDao.getAllAirTransport());
         }
         if (cityFirstOut.isSeaPort() && cityFirstIn.isSeaPort()) {
-            differentTransports.addAll(DBConnection.getAllSeaTransport());
+            differentTransports.addAll(DBConnectionDao.getAllSeaTransport());
         }
         if (cityFirstOut.getContinent().equals(cityFirstIn.getContinent())) {
-            differentTransports.addAll(DBConnection.getAllGroundTransport());
+            differentTransports.addAll(DBConnectionDao.getAllGroundTransport());
         }
 
         if (differentTransports.size()==0){

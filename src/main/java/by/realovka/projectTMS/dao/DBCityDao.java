@@ -1,7 +1,6 @@
 package by.realovka.projectTMS.dao;
 
 import by.realovka.projectTMS.entity.City;
-import by.realovka.projectTMS.util.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +8,7 @@ import java.sql.SQLException;
 
 public class DBCityDao {
     public static void add(City city) {
-        try (Connection connection = DBConnection.getConnection()) {
+        try (Connection connection = DBConnectionDao.getConnection()) {
             String sql = "INSERT INTO cities (name, latitude,longitude,airport,sea_port,continent) VALUES(?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, city.getName());
@@ -26,7 +25,7 @@ public class DBCityDao {
     }
 
     public static void remove(String city) {
-        try (Connection connection = DBConnection.getConnection()) {
+        try (Connection connection = DBConnectionDao.getConnection()) {
             String sql = "DELETE FROM cities WHERE name=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, city);
@@ -36,7 +35,7 @@ public class DBCityDao {
         }
     }
     public static void update(City city) {
-        try (Connection connection = DBConnection.getConnection()) {
+        try (Connection connection = DBConnectionDao.getConnection()) {
             String sql = "UPDATE cities SET latitude=?, longitude=?, airport=?, sea_port=?, continent=? WHERE name=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setDouble(1, city.getLatitude());

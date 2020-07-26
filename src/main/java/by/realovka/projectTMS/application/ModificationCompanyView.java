@@ -1,7 +1,7 @@
 package by.realovka.projectTMS.application;
 
 import by.realovka.projectTMS.dao.DBCityDao;
-import by.realovka.projectTMS.dao.DBTypeOfTransportDao;
+import by.realovka.projectTMS.dao.DBTransportTypeDao;
 
 import java.util.Scanner;
 
@@ -28,13 +28,13 @@ public class ModificationCompanyView {
                 DBCityDao.update(InsertOrUpdateCityView.setOrUpdateCity(choice));
                 break;
             case 4:
-                DBTypeOfTransportDao.add(InsertOrUpdateTransportView.setOrUpdate(choice));
+                DBTransportTypeDao.add(InsertOrUpdateTransportView.setOrUpdate(choice));
                 break;
             case 5:
-                DBTypeOfTransportDao.remove(DeleteTransportView.deleteViewOfTransport());
+                DBTransportTypeDao.remove(DeleteTransportView.deleteViewOfTransport());
                 break;
             case 6:
-                DBTypeOfTransportDao.update(InsertOrUpdateTransportView.setOrUpdate(choice));
+                DBTransportTypeDao.update(InsertOrUpdateTransportView.setOrUpdate(choice));
                 break;
             case 7:
                 EnterView.askForUserNameAndPassword();

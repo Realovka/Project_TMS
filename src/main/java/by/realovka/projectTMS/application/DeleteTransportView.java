@@ -1,6 +1,6 @@
 package by.realovka.projectTMS.application;
 
-import by.realovka.projectTMS.util.DBConnection;
+import by.realovka.projectTMS.dao.DBConnectionDao;
 import by.realovka.projectTMS.util.InPut;
 
 import java.util.List;
@@ -11,7 +11,7 @@ public class DeleteTransportView {
     private static String viewOfTransport;
 
     public static String deleteViewOfTransport(){
-        List<String> viewOfTransports= DBConnection.getViewOfTransport();
+        List<String> viewOfTransports= DBConnectionDao.getViewOfTransport();
         while (viewOFTransportDelete) {
             System.out.println("Выберите из списка транспорт, который хотите удалить");
             Scanner scanner = new Scanner(System.in);

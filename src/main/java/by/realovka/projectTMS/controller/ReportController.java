@@ -2,7 +2,7 @@ package by.realovka.projectTMS.controller;
 
 import by.realovka.projectTMS.entity.ReportInformation;
 import by.realovka.projectTMS.entity.TransportWrapper;
-import by.realovka.projectTMS.util.DBConnection;
+import by.realovka.projectTMS.dao.DBConnectionDao;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -13,7 +13,7 @@ import java.util.List;
 
 
 
-public class Report implements Runnable {
+public class ReportController implements Runnable {
 
 
         public void run () {
@@ -25,7 +25,7 @@ public class Report implements Runnable {
 
     public void getXMLReport() {
         try {
-            List<ReportInformation> reportInformations=DBConnection.getOrders();
+            List<ReportInformation> reportInformations= DBConnectionDao.getOrders();
             TransportWrapper transportWrapper=new TransportWrapper(reportInformations);
             JAXBContext context = JAXBContext.newInstance(ReportInformation.class, TransportWrapper.class);
             Marshaller marshaller = context.createMarshaller();

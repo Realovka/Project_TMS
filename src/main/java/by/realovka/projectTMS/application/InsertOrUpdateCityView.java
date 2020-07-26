@@ -1,7 +1,7 @@
 package by.realovka.projectTMS.application;
 
 import by.realovka.projectTMS.entity.City;
-import by.realovka.projectTMS.util.DBConnection;
+import by.realovka.projectTMS.dao.DBConnectionDao;
 import by.realovka.projectTMS.util.InPut;
 
 import java.util.Arrays;
@@ -73,7 +73,7 @@ public class InsertOrUpdateCityView {
     }
 
     public static String updateCity() {
-        List<String> cities = DBConnection.getCities();
+        List<String> cities = DBConnectionDao.getCities();
         while (cityDelete) {
             System.out.println("Выберите из списка город, который хотите редактировать");
             Scanner scanner = new Scanner(System.in);

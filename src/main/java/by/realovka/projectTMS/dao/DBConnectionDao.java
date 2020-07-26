@@ -1,7 +1,7 @@
-package by.realovka.projectTMS.util;
+package by.realovka.projectTMS.dao;
 
 import by.realovka.projectTMS.application.BestTravelView;
-import by.realovka.projectTMS.controller.BestTravel;
+import by.realovka.projectTMS.controller.BestTravelController;
 import by.realovka.projectTMS.entity.City;
 import by.realovka.projectTMS.entity.ReportInformation;
 import by.realovka.projectTMS.entity.TransportType;
@@ -11,7 +11,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBConnection {
+public class DBConnectionDao {
     private static final String URL = "jdbc:mysql://localhost:3306/transport?serverTimezone=UTC";
     private static final String USER = "root";
     private static final String PASSWORD = "Vorobei55";
@@ -23,7 +23,7 @@ public class DBConnection {
 
     public static City getCityOut(String cityOut) {
         City cityFirstOut = new City();
-        try (Connection connection = DBConnection.getConnection()) {
+        try (Connection connection = DBConnectionDao.getConnection()) {
             String sql = "SELECT * FROM cities WHERE name=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, cityOut);
@@ -48,7 +48,7 @@ public class DBConnection {
 
     public static City getCityIn(String cityIn) {
         City cityFirstIn = new City();
-        try (Connection connection = DBConnection.getConnection()) {
+        try (Connection connection = DBConnectionDao.getConnection()) {
             String sql = "SELECT * FROM cities WHERE name=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, cityIn);
@@ -73,7 +73,7 @@ public class DBConnection {
 
     public static List<TransportView> getAllAirTransport() {
         List<TransportView> airTransport = new ArrayList<>();
-        try (Connection connectionViewOfTransport = DBConnection.getConnection()) {
+        try (Connection connectionViewOfTransport = DBConnectionDao.getConnection()) {
             Statement statementViewOfTransport = connectionViewOfTransport.createStatement();
             ResultSet resultSet = statementViewOfTransport.executeQuery("SELECT* FROM view_of_transport WHERE type =2");
             while (resultSet.next()) {
@@ -94,7 +94,7 @@ public class DBConnection {
 
     public static List<TransportView> getAllSeaTransport() {
         List<TransportView> seaTransport = new ArrayList<>();
-        try (Connection connectionViewOfTransport = DBConnection.getConnection()) {
+        try (Connection connectionViewOfTransport = DBConnectionDao.getConnection()) {
             Statement statementViewOfTransport = connectionViewOfTransport.createStatement();
             ResultSet resultSet = statementViewOfTransport.executeQuery("SELECT* FROM view_of_transport WHERE type =3");
             while (resultSet.next()) {
@@ -115,7 +115,7 @@ public class DBConnection {
 
     public static List<TransportView> getAllGroundTransport() {
         List<TransportView> groundTransport = new ArrayList<>();
-        try (Connection connectionViewOfTransport = DBConnection.getConnection()) {
+        try (Connection connectionViewOfTransport = DBConnectionDao.getConnection()) {
             Statement statementViewOfTransport = connectionViewOfTransport.createStatement();
             ResultSet resultSet = statementViewOfTransport.executeQuery("SELECT* FROM view_of_transport WHERE type =1");
             while (resultSet.next()) {
@@ -136,7 +136,7 @@ public class DBConnection {
 
     public static List<String> getCities() {
         List<String> cities = new ArrayList<>();
-        try (Connection connection = DBConnection.getConnection()) {
+        try (Connection connection = DBConnectionDao.getConnection()) {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT name FROM cities");
             while (result.next()) {
@@ -154,7 +154,7 @@ public class DBConnection {
 
     public static List<TransportType> getTypeOfTransport() {
         List<TransportType> typeOfTransports = new ArrayList<>();
-        try (Connection connection = DBConnection.getConnection()) {
+        try (Connection connection = DBConnectionDao.getConnection()) {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM type_of_transport");
             while (result.next()) {
@@ -173,7 +173,7 @@ public class DBConnection {
 
     public static List<String> getViewOfTransport() {
         List<String> viewOfTransports = new ArrayList<>();
-        try (Connection connection = DBConnection.getConnection()) {
+        try (Connection connection = DBConnectionDao.getConnection()) {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT name FROM view_of_transport");
             while (result.next()) {
@@ -191,7 +191,7 @@ public class DBConnection {
 
     public static List<ReportInformation> getOrders() {
         List<ReportInformation> reportInformations = new ArrayList<>();
-        try (Connection connection = DBConnection.getConnection()) {
+        try (Connection connection = DBConnectionDao.getConnection()) {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM history");
             while (result.next()) {
@@ -214,27 +214,27 @@ public class DBConnection {
     }
 
     static  public ReportInformation getReportInformation(){
-        City cityOut = DBConnection.getCityOut(BestTravelView.getCityOut());
-        City cityIn = DBConnection.getCityIn(BestTravelView.getCityIn());
+        City cityOut = DBConnectionDao.getCityOut(BestTravelView.getCityOut());
+        City cityIn = DBConnectionDao.getCityIn(BestTravelView.getCityIn());
         int passengersOut = BestTravelView.getPassengersOut();
-        List<TransportView> allTransportFromTwoCities = BestTravel.getAllTransportFromTwoCities(cityOut, cityIn, passengersOut, BestTravelView.getCargoOut());
-        try (Connection connection = DBConnection.getConnection()) {
+        List<TransportView> allTransportFromTwoCities = BestTravelController.getAllTransportFromTwoCities(cityOut, cityIn, passengersOut, BestTravelView.getCargoOut());
+        try (Connection connection = DBConnectionDao.getConnection()) {
             String sql = "INSERT INTO history (city_name_out, city_name_in, passengers, cargo, fast_transport, cheap_transport) VALUES(?,?,?,?,?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, BestTravelView.getCityOut());
             preparedStatement.setString(2, BestTravelView.getCityIn());
             preparedStatement.setInt(3, passengersOut);
             preparedStatement.setDouble(4, BestTravelView.getCargoOut());
-            preparedStatement.setString(5, BestTravel.getBestTransportBySpeed(allTransportFromTwoCities).getName());
-            preparedStatement.setString(6, BestTravel.getBestTransportByPrice(allTransportFromTwoCities).getName());
+            preparedStatement.setString(5, BestTravelController.getBestTransportBySpeed(allTransportFromTwoCities).getName());
+            preparedStatement.setString(6, BestTravelController.getBestTransportByPrice(allTransportFromTwoCities).getName());
             preparedStatement.execute();
 
         } catch (SQLException e){
             e.printStackTrace();
         }
         return new ReportInformation(BestTravelView.getCityOut(), BestTravelView.getCityIn(), passengersOut, BestTravelView.getCargoOut(),
-                BestTravel.getBestTransportBySpeed(allTransportFromTwoCities).getName(),
-                BestTravel.getBestTransportByPrice(allTransportFromTwoCities).getName());
+                BestTravelController.getBestTransportBySpeed(allTransportFromTwoCities).getName(),
+                BestTravelController.getBestTransportByPrice(allTransportFromTwoCities).getName());
     }
 
 }

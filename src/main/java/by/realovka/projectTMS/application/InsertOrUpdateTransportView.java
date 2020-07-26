@@ -2,7 +2,7 @@ package by.realovka.projectTMS.application;
 
 import by.realovka.projectTMS.entity.TransportType;
 import by.realovka.projectTMS.entity.TransportView;
-import by.realovka.projectTMS.util.DBConnection;
+import by.realovka.projectTMS.dao.DBConnectionDao;
 import by.realovka.projectTMS.util.InPut;
 
 import java.util.List;
@@ -49,7 +49,7 @@ public class InsertOrUpdateTransportView {
     }
 
     public static String updateViewOfTransport() {
-        List<String> viewOfTransports = DBConnection.getViewOfTransport();
+        List<String> viewOfTransports = DBConnectionDao.getViewOfTransport();
         while (transportUpdate) {
             System.out.println("Выберите из списка транспорт, который хотите редактировать");
             Scanner scanner = new Scanner(System.in);
@@ -64,10 +64,10 @@ public class InsertOrUpdateTransportView {
         TransportType typeOfTransport=new TransportType();
         while (flag) {
             System.out.println("Выберите тип транспорта ");
-            System.out.println(DBConnection.getTypeOfTransport());
+            System.out.println(DBConnectionDao.getTypeOfTransport());
             Scanner scanner3 = new Scanner(System.in);
             String transportType = scanner3.nextLine();
-            typeOfTransports = DBConnection.getTypeOfTransport();
+            typeOfTransports = DBConnectionDao.getTypeOfTransport();
             for (int i = 0; i < typeOfTransports.size(); i++) {
                 if (typeOfTransports.get(i).getName().equals(transportType)) {
                     typeOfTransport=typeOfTransports.get(i);
