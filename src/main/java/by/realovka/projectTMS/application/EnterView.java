@@ -4,7 +4,7 @@ import by.realovka.projectTMS.util.Autorization;
 
 import java.util.Scanner;
 
-public class EnterView {
+public class EnterView { //
     private static String login;
     public static void askForUserNameAndPassword() {
         while (true) {

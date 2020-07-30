@@ -13,14 +13,12 @@ import java.util.List;
 
 
 
-public class ReportController implements Runnable {
+public class ReportController implements Runnable { //
 
 
         public void run () {
-
-         getXMLReport();
-
-    }
+            getXMLReport();
+        }
 
 
     public void getXMLReport() {

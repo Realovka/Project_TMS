@@ -11,7 +11,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBConnectionDao {
+public class DBConnectionDao { //
     private static final String URL = "jdbc:mysql://localhost:3306/transport?serverTimezone=UTC";
     private static final String USER = "root";
     private static final String PASSWORD = "Vorobei55";
@@ -163,8 +163,6 @@ public class DBConnectionDao {
                 TransportType typeOfTransport=new TransportType(id,name);
                 typeOfTransports.add(typeOfTransport);
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }

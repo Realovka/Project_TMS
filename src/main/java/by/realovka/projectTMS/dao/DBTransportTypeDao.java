@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class DBTransportTypeDao {
+public class DBTransportTypeDao { //
     public static void add(TransportView viewOfTransport) {
         try (Connection connection = DBConnectionDao.getConnection()) {
             String sql = "INSERT INTO view_of_transport (name, speed,passengers,cargo,type,price_per_km) VALUES(?,?,?,?,?,?)";

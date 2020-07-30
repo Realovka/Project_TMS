@@ -5,7 +5,7 @@ import by.realovka.projectTMS.dao.DBTransportTypeDao;
 
 import java.util.Scanner;
 
-public class ModificationCompanyView {
+public class ModificationCompanyView { //
     public static void showModificationMenu() {
         System.out.println("Какой функционал хотите реализовать?");
         System.out.println("1-добавить город");

@@ -68,7 +68,5 @@ public class InPut {
             System.out.println("Вы неправильно ввели континент. Повторите ввод");
             return true;
         }
-
     }
-
 }

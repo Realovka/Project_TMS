@@ -8,7 +8,7 @@ import java.util.Objects;
 
 
 @XmlType(propOrder = {"id","cityNameOut","cityNameIn","passengers","cargo","fastTransport","cheapTransport"})
-public class ReportInformation {
+public class ReportInformation { //
 
     private int id;
     private String cityNameOut;

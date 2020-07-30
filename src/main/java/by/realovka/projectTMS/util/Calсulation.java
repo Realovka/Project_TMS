@@ -1,6 +1,6 @@
 package by.realovka.projectTMS.util;
 
-public class Calсulation {
+public class Calсulation { //
     private static final  int RADIUS=6371;
     private static final  double PI=3.1416;
     private static final  int CONST=180;

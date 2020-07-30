@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class InsertOrUpdateCityView {
+public class InsertOrUpdateCityView { //
 
     private static List<String> continents = Arrays.asList("Евразия", "Северная Америка", "Африка", "Австралия", "Антарктида", "Южная Америка");
     private static boolean airportCity = false;

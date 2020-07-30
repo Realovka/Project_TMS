@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public class BestTravelView {
+public class BestTravelView { //
 
     private static String cityOut;
     private static String cityIn;

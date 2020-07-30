@@ -7,7 +7,7 @@ import by.realovka.projectTMS.dao.DBConnectionDao;
 import java.util.Scanner;
 
 public class AdminAndUserView {
-    private static boolean flag = true; //
+    private static boolean flag = true;
 
     public static void showMenuForAdministrator() {
         while (flag) {

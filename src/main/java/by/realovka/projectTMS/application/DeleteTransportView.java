@@ -6,7 +6,7 @@ import by.realovka.projectTMS.util.InPut;
 import java.util.List;
 import java.util.Scanner;
 
-public class DeleteTransportView {
+public class DeleteTransportView { //
     private static boolean viewOFTransportDelete=true;
     private static String viewOfTransport;
 

@@ -1,6 +1,6 @@
 package by.realovka.projectTMS.util;
 
-public class Autorization {
+public class Autorization { //
     private static final String LOGINOFADMINISTRATOR="Adm";
     private static final String PASSWORDOFADMINISTRATOR="ADM";
     private static final String LOGINOFUSER="User";

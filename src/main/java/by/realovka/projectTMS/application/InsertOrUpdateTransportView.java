@@ -8,7 +8,7 @@ import by.realovka.projectTMS.util.InPut;
 import java.util.List;
 import java.util.Scanner;
 
-public class InsertOrUpdateTransportView {
+public class InsertOrUpdateTransportView { //
 
     private static String transportName;
     private static boolean transportUpdate = true;

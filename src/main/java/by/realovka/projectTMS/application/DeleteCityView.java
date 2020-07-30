@@ -6,7 +6,7 @@ import by.realovka.projectTMS.util.InPut;
 import java.util.List;
 import java.util.Scanner;
 
-public class DeleteCityView {
+public class DeleteCityView { //
     private static boolean cityDelete=true;
     private static String city;
 

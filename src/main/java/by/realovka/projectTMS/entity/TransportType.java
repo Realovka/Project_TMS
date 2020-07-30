@@ -1,6 +1,6 @@
 package by.realovka.projectTMS.entity;
 
-public class TransportType {
+public class TransportType { //
     private int id;
     private String name;
 
