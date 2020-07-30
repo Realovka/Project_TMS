@@ -6,7 +6,7 @@ import by.realovka.projectTMS.util.InPut;
 import java.util.List;
 import java.util.Scanner;
 
-public class DeleteCityView { //
+public class DeleteCityView {
     private static boolean cityDelete=true;
     private static String city;
 
@@ -14,8 +14,8 @@ public class DeleteCityView { //
         List<String> cities= DBConnectionDao.getCities();
         while (cityDelete) {
             System.out.println("Выберите из списка город, который хотите удалить");
-            Scanner scanner = new Scanner(System.in);
-            city = scanner.nextLine();
+            Scanner cityDeleteScanner = new Scanner(System.in);
+            city = cityDeleteScanner.nextLine();
             cityDelete=InPut.getCity(cities, city);
         }
         cityDelete=true;

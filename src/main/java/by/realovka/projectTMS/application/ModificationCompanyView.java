@@ -5,7 +5,7 @@ import by.realovka.projectTMS.dao.DBTransportTypeDao;
 
 import java.util.Scanner;
 
-public class ModificationCompanyView { //
+public class ModificationCompanyView {
     public static void showModificationMenu() {
         System.out.println("Какой функционал хотите реализовать?");
         System.out.println("1-добавить город");
@@ -15,8 +15,8 @@ public class ModificationCompanyView { //
         System.out.println("5-удалить транспорт");
         System.out.println("6-редактировать транспорт");
         System.out.println("7-выход в предыдущее меню");
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
+        Scanner choiceScanner = new Scanner(System.in);
+        int choice = choiceScanner.nextInt();
         switch (choice) {
             case 1:
                 DBCityDao.add(InsertOrUpdateCityView.setOrUpdateCity(choice));
@@ -42,8 +42,6 @@ public class ModificationCompanyView { //
             default:
                 System.out.println("Нет такого действия");
                 ModificationCompanyView.showModificationMenu();
-
-
         }
     }
 }

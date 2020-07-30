@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
-@XmlRootElement(name = "orders") //
+@XmlRootElement(name = "orders")
 public class TransportWrapper {
     private List<ReportInformation> wrapper;
 

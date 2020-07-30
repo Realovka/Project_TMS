@@ -16,9 +16,9 @@ public class AdminAndUserView {
             System.out.println("2-Реализовать функционал по редактированию транспортной компании");
             System.out.println("3-Реализовать отчет в виде XML-файла");
             System.out.println("4-Выход в предыдущее меню");
-            Scanner scanner = new Scanner(System.in);
-            int answer = scanner.nextInt();
-            switch (answer) {
+            Scanner answerAdminScanner = new Scanner(System.in);
+            int answerAdmin = answerAdminScanner.nextInt();
+            switch (answerAdmin) {
                 case 1:
                     BestTravelView.showQuestion();
                     if (BestTravelController.getAllTransportFromTwoCities(DBConnectionDao.getCityOut(BestTravelView.getCityOut()),
@@ -50,9 +50,9 @@ public class AdminAndUserView {
             System.out.println("Выберите действие");
             System.out.println("1-Подобрать оптимальный маршрут путешествия");
             System.out.println("2-Выход в предыдущее меню");
-            Scanner scanner = new Scanner(System.in);
-            int answer = scanner.nextInt();
-            switch (answer) {
+            Scanner answerUserScanner = new Scanner(System.in);
+            int answerUser = answerUserScanner.nextInt();
+            switch (answerUser) {
                 case 1:
                     BestTravelView.showQuestion();
                     break;

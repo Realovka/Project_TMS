@@ -12,30 +12,24 @@ import java.io.IOException;
 import java.util.List;
 
 
+public class ReportController implements Runnable {
 
-public class ReportController implements Runnable { //
 
-
-        public void run () {
-            getXMLReport();
-        }
+    public void run() {
+        getXMLReport();
+    }
 
 
     public void getXMLReport() {
         try {
-            List<ReportInformation> reportInformations= DBConnectionDao.getOrders();
-            TransportWrapper transportWrapper=new TransportWrapper(reportInformations);
+            List<ReportInformation> reportInformations = DBConnectionDao.getOrders();
+            TransportWrapper transportWrapper = new TransportWrapper(reportInformations);
             JAXBContext context = JAXBContext.newInstance(ReportInformation.class, TransportWrapper.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(transportWrapper, new FileWriter("report.xml"));
-
         } catch (JAXBException | IOException e) {
             e.printStackTrace();
-
-
         }
-
     }
-
 }

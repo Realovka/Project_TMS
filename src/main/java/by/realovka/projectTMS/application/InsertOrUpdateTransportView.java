@@ -8,7 +8,7 @@ import by.realovka.projectTMS.util.InPut;
 import java.util.List;
 import java.util.Scanner;
 
-public class InsertOrUpdateTransportView { //
+public class InsertOrUpdateTransportView {
 
     private static String transportName;
     private static boolean transportUpdate = true;
@@ -25,26 +25,25 @@ public class InsertOrUpdateTransportView { //
                 break;
         }
         System.out.println("Введите скорость транспорта");
-        Scanner scanner = new Scanner(System.in);
-        int newSpeed = InPut.getInt(scanner);
+        Scanner speedScanner = new Scanner(System.in);
+        int newSpeed = InPut.getInt(speedScanner);
         System.out.println("Введите количество пассажиров");
-        Scanner scanner1 = new Scanner(System.in);
-        int newNumberOfPassengers = InPut.getInt(scanner1);
+        Scanner passengersScanner = new Scanner(System.in);
+        int newNumberOfPassengers = InPut.getInt(passengersScanner);
         System.out.println("Введите количество груза");
-        Scanner scanner2 = new Scanner(System.in);
-        double newNumberOfCargo = InPut.getDouble(scanner2);
+        Scanner cargoScanner = new Scanner(System.in);
+        double newNumberOfCargo = InPut.getDouble(cargoScanner);
         TransportType typeOfTransport=getTypeOfTransport();
         System.out.println("Введите цену за км");
-        Scanner scanner4 = new Scanner(System.in);
-        double newPricePerKm = InPut.getDouble(scanner4);
+        Scanner pricePerKmScanner = new Scanner(System.in);
+        double newPricePerKm = InPut.getDouble(pricePerKmScanner);
         return  new TransportView(transportName, newSpeed, newNumberOfPassengers, newNumberOfCargo, typeOfTransport, newPricePerKm);
-
     }
 
     public static String insertViewOfTransport() {
         System.out.println("Введите название транспорта");
-        Scanner scanner = new Scanner(System.in);
-        transportName = scanner.nextLine();
+        Scanner transportNameScanner = new Scanner(System.in);
+        transportName = transportNameScanner.nextLine();
         return transportName;
     }
 
@@ -52,8 +51,8 @@ public class InsertOrUpdateTransportView { //
         List<String> viewOfTransports = DBConnectionDao.getViewOfTransport();
         while (transportUpdate) {
             System.out.println("Выберите из списка транспорт, который хотите редактировать");
-            Scanner scanner = new Scanner(System.in);
-            transportName = scanner.nextLine();
+            Scanner transportNameScanner = new Scanner(System.in);
+            transportName = transportNameScanner.nextLine();
             transportUpdate = InPut.getViewOfTransport(viewOfTransports, transportName);
         }
         transportUpdate=true;
@@ -65,14 +64,13 @@ public class InsertOrUpdateTransportView { //
         while (flag) {
             System.out.println("Выберите тип транспорта ");
             System.out.println(DBConnectionDao.getTypeOfTransport());
-            Scanner scanner3 = new Scanner(System.in);
-            String transportType = scanner3.nextLine();
+            Scanner transportNameScanner = new Scanner(System.in);
+            String transportType = transportNameScanner.nextLine();
             typeOfTransports = DBConnectionDao.getTypeOfTransport();
             for (int i = 0; i < typeOfTransports.size(); i++) {
                 if (typeOfTransports.get(i).getName().equals(transportType)) {
                     typeOfTransport=typeOfTransports.get(i);
                     flag=false;
-
                 }
             } if (flag==true){
                 System.out.println("Такого вида транспорта нет");

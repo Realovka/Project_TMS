@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public class BestTravelView { //
+public class BestTravelView {
 
     private static String cityOut;
     private static String cityIn;
@@ -51,28 +51,26 @@ public class BestTravelView { //
 
     public static void showQuestion() {
         List<String> cities= DBConnectionDao.getCities();
-
         while (flagCityOut) {
             System.out.println("Выберите из списка город, из которого нужно уехать ");
-            Scanner scanner = new Scanner(System.in);
-            cityOut = scanner.nextLine();
+            Scanner cityOutScanner = new Scanner(System.in);
+            cityOut = cityOutScanner.nextLine();
             flagCityOut = InPut.getCity(cities, cityOut);
         }
         while (flagCityIn) {
             System.out.println("Выберите из списка город, в который нужно уехать ");
-            Scanner scanner = new Scanner(System.in);
-            cityIn = scanner.nextLine();
+            Scanner cityInScanner = new Scanner(System.in);
+            cityIn = cityInScanner.nextLine();
             flagCityIn = InPut.getCity(cities, cityIn);
         }
         flagCityIn=true;
         flagCityOut=true;
         System.out.println("Введите цифрой количество пассажиров ");
-        Scanner scanner = new Scanner(System.in);
-        passengersOut = InPut.getInt(scanner);
+        Scanner passengersScanner = new Scanner(System.in);
+        passengersOut = InPut.getInt(passengersScanner);
         System.out.println("Введите цифрой массу перевозимого груза в тоннах. Можно дробное число ");
-        Scanner scanner1 = new Scanner(System.in);
-        cargoOut = InPut.getDouble(scanner1);
-
+        Scanner cargoScanner = new Scanner(System.in);
+        cargoOut = InPut.getDouble(cargoScanner);
         BestTravelController.getBestTransport(cityOut,cityIn,passengersOut,cargoOut);
 
 

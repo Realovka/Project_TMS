@@ -2,7 +2,7 @@ package by.realovka.projectTMS.entity;
 
 import java.util.Objects;
 
-public class TransportView { //
+public class TransportView {
     private  int id;
     private String name;
     private int speed;

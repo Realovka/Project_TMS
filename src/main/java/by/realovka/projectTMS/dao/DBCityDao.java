@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class DBCityDao { //
+public class DBCityDao {
     public static void add(City city) {
         try (Connection connection = DBConnectionDao.getConnection()) {
             String sql = "INSERT INTO cities (name, latitude,longitude,airport,sea_port,continent) VALUES(?,?,?,?,?,?)";

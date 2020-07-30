@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class InsertOrUpdateCityView { //
+public class InsertOrUpdateCityView {
 
     private static List<String> continents = Arrays.asList("Евразия", "Северная Америка", "Африка", "Австралия", "Антарктида", "Южная Америка");
     private static boolean airportCity = false;
@@ -30,23 +30,23 @@ public class InsertOrUpdateCityView { //
                 break;
         }
         System.out.println("Введите широту, где расположен город");
-        Scanner scanner1 = new Scanner(System.in);
-        double latitudeCity = InPut.getDouble(scanner1);
+        Scanner latitudeScanner = new Scanner(System.in);
+        double latitudeCity = InPut.getDouble(latitudeScanner);
         System.out.println("Введите долготу, где расположен город");
-        Scanner scanner2 = new Scanner(System.in);
-        double longitudeCity = InPut.getDouble(scanner2);
+        Scanner longitudeScanner = new Scanner(System.in);
+        double longitudeCity = InPut.getDouble(longitudeScanner);
         while (airportFlag) {
             System.out.println("Есть ли в городе аэропорт?");
-            Scanner scanner3 = new Scanner(System.in);
-            List<Boolean> list = InPut.getBooleanCollection(scanner3);
+            Scanner airportIsScanner = new Scanner(System.in);
+            List<Boolean> list = InPut.getBooleanCollection(airportIsScanner);
             airportCity = list.get(1);
             airportFlag = list.get(0);
         }
         airportFlag=true;
         while (seaPortFlag) {
             System.out.println("Есть ли в городе морской порт?");
-            Scanner scanner3 = new Scanner(System.in);
-            List<Boolean> list = InPut.getBooleanCollection(scanner3);
+            Scanner seaPortIsScanner = new Scanner(System.in);
+            List<Boolean> list = InPut.getBooleanCollection(seaPortIsScanner);
             seaPortCity = list.get(1);
             seaPortFlag = list.get(0);
         }
@@ -56,8 +56,8 @@ public class InsertOrUpdateCityView { //
         }
         while (flag) {
             System.out.println("На каком континенте находится город?");
-            Scanner scanner3 = new Scanner(System.in);
-            continent = scanner3.nextLine();
+            Scanner continentScanner = new Scanner(System.in);
+            continent = continentScanner.nextLine();
             flag = InPut.getContinent(continent, continents);
         }
         flag=true;
@@ -67,8 +67,8 @@ public class InsertOrUpdateCityView { //
 
     public static String insertCity() {
         System.out.println("Введите название города");
-        Scanner scanner = new Scanner(System.in);
-        cityName = scanner.nextLine();
+        Scanner insertCityNameScanner = new Scanner(System.in);
+        cityName = insertCityNameScanner.nextLine();
         return cityName;
     }
 
@@ -76,8 +76,8 @@ public class InsertOrUpdateCityView { //
         List<String> cities = DBConnectionDao.getCities();
         while (cityDelete) {
             System.out.println("Выберите из списка город, который хотите редактировать");
-            Scanner scanner = new Scanner(System.in);
-            cityName = scanner.nextLine();
+            Scanner updateCityScanner = new Scanner(System.in);
+            cityName = updateCityScanner.nextLine();
             cityDelete = InPut.getCity(cities, cityName);
         }
         cityDelete=true;

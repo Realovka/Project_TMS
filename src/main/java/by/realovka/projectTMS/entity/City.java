@@ -2,7 +2,7 @@ package by.realovka.projectTMS.entity;
 
 import java.util.Objects;
 
-public class City { //
+public class City {
     private int id;
     private String name;
     private double latitude;
