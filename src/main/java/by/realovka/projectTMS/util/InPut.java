@@ -2,7 +2,7 @@ package by.realovka.projectTMS.util;
 
 import java.util.*;
 
-public class InPut { //
+public class InPut {
     private static Scanner scanner = new Scanner(System.in);
 
     public static boolean getCity(List<String> cities, String city) {
