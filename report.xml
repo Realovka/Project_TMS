@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<orders>
+    <order>
+        <id>1</id>
+        <cityNameOut>Пекин</cityNameOut>
+        <cityNameIn>Пермь</cityNameIn>
+        <passengers>2</passengers>
+        <cargo>2.0</cargo>
+        <fastTransport>самолет Airbus A380</fastTransport>
+        <cheapTransport>самолет Boing 777</cheapTransport>
+    </order>
+    <order>
+        <id>2</id>
+        <cityNameOut>Сидней</cityNameOut>
+        <cityNameIn>Москва</cityNameIn>
+        <passengers>5</passengers>
+        <cargo>1.0</cargo>
+        <fastTransport>самолет Airbus A380</fastTransport>
+        <cheapTransport>самолет Boing 777</cheapTransport>
+    </order>
+</orders>
